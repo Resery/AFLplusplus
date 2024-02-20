@@ -148,6 +148,9 @@ class UnicornSimpleHeap(object):
         return new_chunk_addr
 
     def free(self, addr):
+        if addr == 0:
+            return False
+            
         for chunk in self._chunks:
             if chunk.is_buffer_in_chunk(addr, 1):
                 if self._debug_print:
